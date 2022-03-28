@@ -1,0 +1,41 @@
+//=============Absolute beginning of the script_MoveToXGoal_ThenStop script======================================== 
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class script_MoveToXGoal_ThenStop : MonoBehaviour
+{//Beginning of class
+
+    public float rightXGoal = -10f;
+    public float speed = 2.0f;
+    private int direction = 1;
+    private Vector3 movement;
+
+
+    // Update is called once per frame
+    void Update()
+    {//Beginning of Update function
+
+        if (transform.position.x < rightXGoal)
+        {//Beginning of if (transform.position.x < rightXGoal)
+
+            direction = 1;
+
+        }//End of if (transform.position.x < rightXGoal)
+        else
+        {//Beginning of else
+
+            speed = 0;
+
+        }//End of else
+
+        movement = Vector3.right * direction * speed * Time.deltaTime;
+        transform.Translate(movement);
+
+    }//End of Update function
+
+
+}//End of class
+
+//========Absolute end of the script_MoveToXGoal_ThenStop script======================================== 
