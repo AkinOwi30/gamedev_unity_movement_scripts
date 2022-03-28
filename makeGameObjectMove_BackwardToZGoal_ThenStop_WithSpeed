@@ -1,0 +1,42 @@
+//~~~~~~~~~~~Absolute beginnning of script_MoveBackwardToZGoal_ThenStop script~~~~~~~~~~~~~~~~~~~~~
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+public class script_MoveBackwardToZGoal_ThenStop : MonoBehaviour
+{//Beginning of public class script_MoveBackwardToZGoal_ThenStop=====================
+
+    public float backwardZGoal = -10f;
+    public float speed = 2.0f;
+    private int direction = 1;
+    private Vector3 movement;
+
+
+    // Update is called once per frame
+    void Update()
+    {//Beginning of Update function
+
+        if (transform.position.z > backwardZGoal)
+        {//Beginning of if (transform.position.z > backwardZGoal)
+
+            direction = 1;
+
+        }//End of if (transform.position.z > backwardZGoal)
+        else
+        {//Beginning of else
+
+            speed = 0;
+
+        }//End of else
+
+        movement = Vector3.forward * direction * speed * Time.deltaTime;
+        transform.Translate(-movement);
+
+    }//End of Update function
+
+
+}//End of public class script_MoveBackwardToZGoal_ThenStop=====================
+
+//~~~~~~~~~~Absolute end of script_MoveBackwardToZGoal_ThenStop script~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
