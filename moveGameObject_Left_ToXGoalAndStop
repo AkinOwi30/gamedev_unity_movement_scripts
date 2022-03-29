@@ -1,0 +1,43 @@
+//===========Absolute beginning of the script_MoveLeft_ToX_Goal============================
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class script_MoveLeft_ToX_Goal : MonoBehaviour
+{//Beginning of public class script_MoveLeft_ToX_Goal class
+
+ public float leftXGoal = -10f;
+    public float speed = 2.0f;
+    private int direction = 1;
+    private Vector3 movement;
+
+
+    // Update is called once per frame
+    void Update()
+    {//Beginning of Update function
+
+        if (transform.position.x > leftXGoal)
+        {//Beginning of if (transform.position.x > leftXGoal)
+
+            direction = 1;
+
+        }//End of if (transform.position.x > leftXGoal)
+        else
+        {//Beginning of else
+
+            speed = 0;
+
+        }//End of else
+
+        movement = Vector3.left * direction * speed * Time.deltaTime;
+        transform.Translate(movement);
+
+    }//End of Update function
+    
+
+
+}//End of public class script_MoveLeft_ToX_Goal class
+
+
+//===========Absolute end of the script_MoveLeft_ToX_Goal============================
