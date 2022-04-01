@@ -1,0 +1,43 @@
+//The very beginning of script_MoveGameObject_DownToYGoal=================================================
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class script_MoveGameObject_DownToYGoal : MonoBehaviour
+{//Beginning of public class script_MoveGameObject_DownToYGoal~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    public float yGoal_LowerThanStarting;
+    public float speed = 20f;
+    private int direction = 1;
+    private Vector3 movement;
+
+
+ // Update is called once per frame
+    void Update()
+    {//Beginning of Update function
+
+        if (transform.position.y > yGoal_LowerThanStarting)
+        {//Beginning of  if (transform.position.y > yGoal_LowerThanStarting)
+
+            direction = 1;
+
+        }//End of  if (transform.position.y > yGoal_LowerThanStarting)
+        else
+        {//Beginning of else
+
+            speed = 0;
+
+        }//End of else
+
+        movement = Vector3.down * direction * speed * Time.deltaTime;
+        transform.Translate(movement);
+
+    }//End of Update function
+
+
+
+}//End of public class script_MoveGameObject_DownToYGoal~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+//The very end of script_MoveGameObject_DownToYGoal=========================================================
