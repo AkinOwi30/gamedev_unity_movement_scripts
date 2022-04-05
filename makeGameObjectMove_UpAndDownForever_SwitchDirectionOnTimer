@@ -1,0 +1,74 @@
+//======Absolute beginning of script_MoveUpAndDownForever_SwitchOnTimer script=========================================
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class script_MoveUpAndDownForever_SwitchOnTimer : MonoBehaviour
+{//~~~~~~~~~Beginning of public class script_MoveUpAndDownForever_SwitchOnTimer~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    //Beginning of variable declarations
+    public float timeBetweenSwitches;
+    public float timer;
+    public bool moveUp;
+    public float speed;
+    //End of variable declarations
+
+   
+    // Start is called before the first frame update
+    void Start()
+    {//Beginning of Start function
+
+        timer = timeBetweenSwitches;
+
+    }//End of Start function
+
+    private void Update()
+    {//Beginning of Update function
+
+        timer -= Time.deltaTime;
+
+    }//End of Update function
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {//Beginning of FixedUpdate function
+
+        if (moveUp == true)
+        {//Beginning of if (moveUp == true)
+
+            if (timer > 0)
+            {
+                transform.Translate(Vector3.up * Time.deltaTime * speed); 
+            }
+            else
+            {
+
+                moveUp = false;
+                timer = timeBetweenSwitches;
+            }
+
+        }//End of if (moveUp == true)
+
+        if (moveUp == false)
+        {//Beginning of if (moveUp == false)
+
+            if (timer > 0)
+            {
+                
+                transform.Translate(Vector3.down * Time.deltaTime * speed);
+            }
+            else
+            {
+
+                moveUp = true;
+                timer = timeBetweenSwitches;
+            }
+
+        }//End of if (moveUp == false)
+        
+    }//End of FixedUpdate function
+
+}//~~~~~~~~~End of public class script_MoveUpAndDownForever_SwitchOnTimer~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+//===========End of script_MoveUpAndDownForever_SwitchOnTimer script=========================================
