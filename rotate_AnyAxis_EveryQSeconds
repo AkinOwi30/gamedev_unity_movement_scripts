@@ -1,0 +1,93 @@
+//-------------The Absolute beginning of public class script_Rotate_EveryXSeconds script--------------------------
+
+
+using System;//Abnormal add
+using System.Collections;
+using UnityEngine;
+
+public class script_Rotate_EveryXSeconds : MonoBehaviour
+{//++++++++++++++Beginning of public class script_Rotate_EveryXSeconds++++++++++++++++++
+
+
+    //Beginning of variable declarations
+    public Vector3andSpace speed_Of_Rotation_ByAxis;
+    public bool ignoreTimescale;
+    private float m_LastRealTime;
+    public float wait_UntilNext_Rotation = 2.0f;
+    public float duration_Of_Rotation = 5.0f;
+    bool stop = false;
+    //End of variable declarations
+
+    private void Start()
+    {//Beginning of private void Start 
+
+        m_LastRealTime = Time.realtimeSinceStartup;
+        StartCoroutine(waitFunction());
+
+    }//End of private void Start 
+
+        IEnumerator Step()
+    {//Beginning of IEnumerator Step()--------------------
+
+        stop = true;
+        if (ignoreTimescale)
+        {
+            yield return new WaitForSecondsRealtime(wait_UntilNext_Rotation);
+        }
+        else
+        {
+            yield return new WaitForSeconds(wait_UntilNext_Rotation);
+        }
+        StartCoroutine(waitFunction());
+
+    }//End of IEnumerator Step()------------------------
+
+        IEnumerator waitFunction()
+    {//Beginning of IEnumerator waitFunction
+
+        stop = false;
+        if (ignoreTimescale)
+        {
+            yield return new WaitForSecondsRealtime(duration_Of_Rotation);
+        }
+        else
+        {
+            yield return new WaitForSeconds(duration_Of_Rotation);
+        }
+        StartCoroutine(Step());
+
+
+    }//~~~~~~~~~~~~End of IEnumerator waitFunction~~~~~~~~~~~~~~~~
+
+        // Update is called once per frame
+    private void Update()
+    {//Beginning of Update~~~~~~~~~~~~~~ 
+
+        if (!stop)
+        {
+            float deltaTime = Time.deltaTime;
+            if (ignoreTimescale)
+            {
+                deltaTime = (Time.realtimeSinceStartup - m_LastRealTime);
+                m_LastRealTime = Time.realtimeSinceStartup;
+            }
+            transform.Rotate(speed_Of_Rotation_ByAxis.speed_Of_Rotation_ByAxis * deltaTime, speed_Of_Rotation_ByAxis.space);
+        }
+
+    }//End of private void Update
+
+    [Serializable]
+
+    public class Vector3andSpace
+    {//Beginning of public class Vector3andSpace==================
+
+        public Vector3 speed_Of_Rotation_ByAxis;
+        public Space space = Space.Self;
+
+    }//End of public class Vector3andSpace==================
+
+
+}//++++++++++++++End of public class script_Rotate_EveryXSeconds++++++++++++++++++
+
+
+//-------------The Absolute end of public class script_Rotate_EveryXSeconds script--------------------------
